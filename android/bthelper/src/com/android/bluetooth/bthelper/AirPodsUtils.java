@@ -56,9 +56,13 @@ public class AirPodsUtils {
         }
     }
 
-    public static void setModel(byte[] data) {
+    public static boolean setModel(byte[] data) {
         model = ""+((data[3] >> 4) & 0xF)+(data[3] & 0xF)+((data[4] >> 4) & 0xF)+(data[4] & 0xF);
+        if (!AirPodsConstants.Models.contains(model)) {
+            return false;
+        }
         Log.d(TAG, "Model code: "+model);
+        return true;
     }
 
     public static void setModelData(byte[] data) {
@@ -79,7 +83,6 @@ public class AirPodsUtils {
             //case "01120": PowerbeatsPro.setModelData(data); break; // No Icon yet
             //case "1120": BeatsStudioBuds.setModelData(data); break; // No Icon yet
             //case "0320": Powerbeats3.setModelData(data); break; // No Icon yet
-            default: Generic.setModelData(data); break;
         }
     }
 
@@ -101,7 +104,7 @@ public class AirPodsUtils {
             //case "01120": return PowerbeatsPro.getModelArguments(); // No Icon yet
             //case "1120": return BeatsStudioBuds.getModelArguments(); // No Icon yet
             //case "0320": return Powerbeats3.getModelArguments(); // No Icon yet
-            default: return Generic.getModelArguments();
+            default: return null;
         }
     }
 
@@ -123,7 +126,6 @@ public class AirPodsUtils {
             //case "01120": PowerbeatsPro.setModelMetaData(context, mCurrentDevice); break; // No Icon yet
             //case "1120": BeatsStudioBuds.setModelMetaData(context, mCurrentDevice); break; // No Icon yet
             //case "0320": Powerbeats3.setModelMetaData(context, mCurrentDevice); break; // No Icon yet
-            default: Generic.setModelMetaData(context, mCurrentDevice); break;
         }
     }
 
@@ -145,7 +147,7 @@ public class AirPodsUtils {
             //case "01120": return PowerbeatsPro.isModelStateChanged(); // No Icon yet
             //case "1120": return BeatsStudioBuds.isModelStateChanged(); // No Icon yet
             //case "0320": return Powerbeats3.isModelStateChanged(); // No Icon yet
-            default: return false; // Generic.isModelStateChanged();
+            default: return false;
         }
     }
 

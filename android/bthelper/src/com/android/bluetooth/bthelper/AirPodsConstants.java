@@ -28,10 +28,19 @@ public class AirPodsConstants {
     public static final int MANUFACTURER_MAGIC = 0x07;
 
     private static final Set<ParcelUuid> UUIDS = new HashSet<>();
-
     static {
         UUIDS.add(ParcelUuid.fromString("74ec2172-0bad-4d01-8f77-997b2be0722a"));
         UUIDS.add(ParcelUuid.fromString("2a72e02b-7b99-778f-014d-ad0b7221ec74"));
+    }
+
+    public static final Set<String> Models = new HashSet<>();
+    static {
+        Models.add("0220");  // AirPods
+        Models.add("01520"); // AirPods Gen2
+        Models.add("1320"); // AirPods Gen3
+        Models.add("01420"); // AirPods Pro
+        Models.add("1420"); // AirPods Pro Gen2
+        // Models.add("01020"); // AirPods Max
     }
 
     public static boolean shouldBeAirPods(BluetoothDevice device) {

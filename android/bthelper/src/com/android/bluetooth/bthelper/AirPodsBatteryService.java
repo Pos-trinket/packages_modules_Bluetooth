@@ -60,6 +60,8 @@ public class AirPodsBatteryService extends Service {
     private int mBestLeRssi = -128;
     private long mBestLeLastReported = 0;
 
+    private boolean isSupported = false;
+
     private boolean isChanged = false;
     
     private final ScanCallback mScanCallback = new ScanCallback() {
@@ -170,6 +172,11 @@ public class AirPodsBatteryService extends Service {
             return;
         }
 
+        isSupported = AirPodsUtils.setModel(data);
+        if (!isSupported) /* Device is not supported */ return;
+
+        AirPodsUtils.setModelData(data);
+
         final String address = result.getDevice().getAddress();
         final int rssi = result.getRssi();
 
@@ -196,10 +203,6 @@ public class AirPodsBatteryService extends Service {
                 return;
             }
         }
-        
-        AirPodsUtils.setModel(data);
-
-        AirPodsUtils.setModelData(data);
 
         isChanged = AirPodsUtils.isModelStateChanged();
 
