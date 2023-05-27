@@ -66,55 +66,47 @@ public class AirPodsUtils {
     }
 
     public static void setModelData(byte[] data) {
-        //switch (model) {
-        //    case "01020": AirPodsMax.setModelData(data); break;
-        //}
         switch (model) {
             case "0220": AirPods.setModelData(data); break;
             case "01520": AirPodsGen2.setModelData(data); break;
             case "1320": AirPodsGen3.setModelData(data); break;
             case "01420": AirPodsPro.setModelData(data); break;
             case "1420": AirPodsProGen2.setModelData(data); break;
+            // case "01020": AirPodsMax.setModelData(data); break;
         }
     }
 
     public static Object[] getModelArguments() {
-        //switch (model) {
-        //    case "01020": return AirPodsMax.getModelArguments();
-        //}
         switch (model) {
             case "0220": return AirPods.getModelArguments();
             case "01520": return AirPodsGen2.getModelArguments();
             case "1320": return AirPodsGen3.getModelArguments();
             case "01420": return AirPodsPro.getModelArguments();
             case "1420": return AirPodsProGen2.getModelArguments();
+            // case "01020": return AirPodsMax.getModelArguments();
             default: return null;
         }
     }
 
     public static void setModelMetaData(Context context, BluetoothDevice mCurrentDevice) {
-        //switch (model) {
-        //    case "01020": AirPodsMax.setModelMetaData(context, mCurrentDevice); break;
-        //}
         switch (model) {
             case "0220": AirPods.setModelMetaData(context, mCurrentDevice); break;
             case "01520": AirPodsGen2.setModelMetaData(context, mCurrentDevice); break;
             case "1320": AirPodsGen3.setModelMetaData(context, mCurrentDevice); break;
             case "01420": AirPodsPro.setModelMetaData(context, mCurrentDevice); break;
             case "1420": AirPodsProGen2.setModelMetaData(context, mCurrentDevice); break;
+            // case "01020": AirPodsMax.setModelMetaData(context, mCurrentDevice); break;
         }
     }
 
     public static boolean isModelStateChanged() {
-        //switch (model) {
-        //    case "01020": return AirPodsMax.isModelStateChanged();
-        //}
         switch (model) {
             case "0220": return AirPods.isModelStateChanged();
             case "01520": return AirPodsGen2.isModelStateChanged();
             case "1320": return AirPodsGen3.isModelStateChanged();
             case "01420": return AirPodsPro.isModelStateChanged();
             case "1420": return AirPodsProGen2.isModelStateChanged();
+            // case "01020": return AirPodsMax.isModelStateChanged();
             default: return false;
         }
     }
